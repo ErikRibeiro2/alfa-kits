@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALFA Kits Corporativos | Premium Gifting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #141414;
+            --gold: #c29562;
+            --gold-light: #e0b88e;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(194, 149, 98, 0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-white);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=2070') center/cover;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.8s;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background: var(--gold);
+            color: black;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 2px;
+            transition: var(--transition);
+            opacity: 0;
+            animation: fadeIn 1s forwards 1.1s;
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(194, 149, 98, 0.2);
+        }
+
+        /* Categories Section */
+        .section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: var(--gold);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 40px;
+            border: 1px solid rgba(194, 149, 98, 0.1);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .card .badge {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        /* Moments Section */
+        .moments {
+            background: #111;
+        }
+
+        .moments-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .moments-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+
+        .moment-item {
+            padding: 30px;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: var(--transition);
+        }
+
+        .moment-item:hover {
+            background: rgba(194, 149, 98, 0.05);
+            border-color: rgba(194, 149, 98, 0.2);
+        }
+
+        .moment-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 80px 10% 40px;
+            border-top: 1px solid rgba(194, 149, 98, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            color: var(--gold);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+        }
+
+        .footer-col p, .footer-col a {
+            color: var(--text-gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #444;
+            font-size: 0.8rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ALFA</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#categorias">Kits</a></li>
+            <li><a href="#momentos">Momentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="inicio">
+        <h1>Conectamos marcas a pessoas</h1>
+        <p>Experiências memoráveis através de kits corporativos exclusivos e personalizados para cada momento da sua jornada.</p>
+        <a href="#categorias" class="btn">Conhecer Portfólio</a>
+    </section>
+
+    <section class="section" id="categorias">
+        <h2 class="section-title">Nossas Categorias</h2>
+        <div class="categories-grid">
+            <div class="card reveal">
+                <span class="badge">Alfa Starter</span>
+                <h3>SILVER</h3>
+                <p>Praticidade e conexão para grandes equipes e eventos. Itens essenciais com acabamento premium.</p>
+                <a href="#" style="color: var(--gold); text-decoration: none; font-size: 0.8rem; font-weight: bold;">VER DETALHES →</a>
+            </div>
+            <div class="card reveal" style="border-color: var(--gold);">
+                <span class="badge">Alfa Executive</span>
+                <h3>GOLD</h3>
+                <p>Estilo e funcionalidade para valorizar talentos e parceiros estratégicos. O equilíbrio perfeito.</p>
+                <a href="#" style="color: var(--gold); text-decoration: none; font-size: 0.8rem; font-weight: bold;">VER DETALHES →</a>
+            </div>
+            <div class="card reveal">
+                <span class="badge">Alfa Elite</span>
+                <h3>DIAMOND</h3>
+                <p>Exclusividade e sofisticação para momentos que marcam. Materiais nobres e personalização única.</p>
+                <a href="#" style="color: var(--gold); text-decoration: none; font-size: 0.8rem; font-weight: bold;">VER DETALHES →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section moments" id="momentos">
+        <h2 class="section-title">Para cada momento, o kit ideal</h2>
+        <div class="moments-grid">
+            <div class="moment-item reveal">
+                <span class="moment-icon">👤</span>
+                <h4>Onboarding</h4>
+                <p style="font-size: 0.8rem; color: var(--text-gray);">Boas-vindas inesquecíveis.</p>
+            </div>
+            <div class="moment-item reveal">
+                <span class="moment-icon">🏆</span>
+                <h4>Reconhecimento</h4>
+                <p style="font-size: 0.8rem; color: var(--text-gray);">Valorize quem faz a diferença.</p>
+            </div>
+            <div class="moment-item reveal">
+                <span class="moment-icon">📅</span>
+                <h4>Datas Comemorativas</h4>
+                <p style="font-size: 0.8rem; color: var(--text-gray);">Presente em todos os marcos.</p>
+            </div>
+            <div class="moment-item reveal">
+                <span class="moment-icon">🤝</span>
+                <h4>Clientes e Parceiros</h4>
+                <p style="font-size: 0.8rem; color: var(--text-gray);">Fortaleça seus relacionamentos.</p>
+            </div>
+            <div class="moment-item reveal">
+                <span class="moment-icon">🏢</span>
+                <h4>Eventos</h4>
+                <p style="font-size: 0.8rem; color: var(--text-gray);">Sua marca em evidência.</p>
+            </div>
+            <div class="moment-item reveal">
+                <span class="moment-icon">🌿</span>
+                <h4>Sustentabilidade</h4>
+                <p style="font-size: 0.8rem; color: var(--text-gray);">Kits eco-friendly com propósito.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 20px;">ALFA</div>
+                <p>Transformando ocasiões em memórias valiosas através de presentes corporativos de alto padrão.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contato</h4>
+                <p>📍 São Paulo, Brasil</p>
+                <p>📞 (11) 91234-5678</p>
+                <p>✉️ contato@alfakitscorporativos.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Siga-nos</h4>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">WhatsApp</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 ALFA Kits Corporativos. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Reveal animations on scroll
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        });
+
+        // Simple smooth scroll for nav links (handled by CSS, but good for JS control)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
